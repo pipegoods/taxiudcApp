@@ -16,7 +16,8 @@ export class AuthService {
     phoneNumber: '',
     photoURL: '',
     email: '',
-    emailVerified: false
+    emailVerified: false,
+    barriosI: []
   }; // Save logged in user data
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -38,6 +39,7 @@ export class AuthService {
           this.userData.emailVerified = e.emailVerified;
           this.userData.phoneNumber = e.phoneNumber;
           this.userData.email = e.email;
+          this.userData.barriosI = e.barriosI;
           localStorage.setItem('user', JSON.stringify(this.userData));
           JSON.parse(localStorage.getItem('user'));
           
@@ -91,7 +93,8 @@ export class AuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
-        phoneNumber: (user.phoneNumber != null) ? user.phoneNumber : e.phoneNumber
+        phoneNumber: (user.phoneNumber != null) ? user.phoneNumber : e.phoneNumber,
+        barriosI: (user.barriosI != null) ? user.barriosI : e.barriosI
       }
       
       return userRef.set(userData, {
@@ -114,7 +117,8 @@ export class AuthService {
         phoneNumber: '',
         photoURL: '',
         email: '',
-        emailVerified: false
+        emailVerified: false,
+        barriosI: []
       }; 
       localStorage.removeItem('user');
       this.router.navigate(['login']);

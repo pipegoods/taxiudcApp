@@ -11,6 +11,13 @@
                 <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
                 <p>Whatsapp: <strong *ngIf="!banderaEditTel">{{(user.phoneNumber) ? user.phoneNumber: 'No tiene'}}
                 </strong> <input *ngIf="banderaEditTel" type="text" [(ngModel)]="user.phoneNumber"> <button *ngIf="!banderaEditTel" type="button" (click)="banderaEditTel = true">Cambiar numero</button><button *ngIf="banderaEditTel" type="button" (click)="guardar()">Guardar</button></p>
+                <br>
+                <p>Barrios de interes</p>
+                <ul>
+                    <li *ngFor="let item of user.barriosI">{{item}}</li>
+                </ul>
+                <input type="text" [(ngModel)]="barrioA">
+                <button type="button" (click)="agregarBarrio()">Agregar barrio</button>
               </div>
 </div>
 

@@ -15,8 +15,10 @@ export class PerfilComponent implements OnInit {
     phoneNumber: '',
     photoURL: '',
     email: '',
-    emailVerified: false
+    emailVerified: false,
+    barriosI: []
   };
+  barrioA = '';
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
@@ -27,7 +29,8 @@ export class PerfilComponent implements OnInit {
     this.user.emailVerified = this.authService.userData.emailVerified;
     this.user.phoneNumber = this.authService.userData.phoneNumber;
     this.user.email = this.authService.userData.email;
-    console.log(this.authService.userData.displayName);
+    this.user.barriosI = this.authService.userData.barriosI;
+    console.log(this.authService.userData.barriosI);
     
   }
 
@@ -35,5 +38,15 @@ export class PerfilComponent implements OnInit {
     this.banderaEditTel = false;
     console.log(this.user);
     this.authService.SetUserData(this.user);
+  }
+
+  agregarBarrio () {
+    if (this.barrioA != '') {
+      this.user.barriosI.push(this.barrioA);
+      this.authService.SetUserData(this.user);
+      this.barrioA = '';
+    } else {
+      alert("No has ingresado un barrio.");
+    }
   }
 }

@@ -14,6 +14,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { CrearTaxiComponent } from './crear-taxi/crear-taxi.component';
 import { FormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule, FormsModule
+    AngularFireDatabaseModule, FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]

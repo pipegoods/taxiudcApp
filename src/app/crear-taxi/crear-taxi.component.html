@@ -1,0 +1,39 @@
+<section class="container">
+    <div class="row">
+    <h3 class="center-align">Crear Taxi</h3>
+        <article class="col s8 offset-s3">
+            
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="nombre">Nombre quien pide</label>
+                    <input type="text" [(ngModel)]="taxi.nombre" >
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="barrio">Barrio donde se dirije</label>
+                    <input type="text" [(ngModel)]="taxi.barrio" >
+                </div>
+                
+                <div class="input-field">
+                    <i class="material-icons prefix">Whatsapp</i>
+                    <label for="whatsapp">Whatsapp</label>
+                    <input type="text" [(ngModel)]="taxi.wpp" >
+                </div>
+
+                <p class="center-align">
+                    <button class="btn waves-effect waves-light color-banner" (click)="crearTaxi()">Crear
+                        <i class="material-icons right">send</i>
+                      </button>
+                                            </p>
+        </article>
+
+
+    </div>
+</section>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large color-banner" routerLink="/">
+      <i class="large material-icons">search</i>
+    </a>
+  </div>

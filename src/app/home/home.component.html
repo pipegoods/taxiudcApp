@@ -1,0 +1,29 @@
+<div class="container">
+  <h5 class="center-align">¿Buscando taxi? Estos son los disponibles</h5>
+  <br>
+  
+  <div class="row" *ngIf="authService.userData as user">
+    <div class="col s12 m6" *ngFor="let a of taxis" >
+      <div class="card color-banner">
+        <div class="card-content">
+          <span class="card-title">{{a.barrio}}</span>
+          <p><b>{{a.name_persona}}</b> esta pidiendo un taxi al barrio: <b>{{a.barrio}}</b></p>
+          <br>
+          <b>{{a.fecha | date:'yyyy/MM/dd h:mm:ss a'}}</b>
+        </div>
+        <div class="card-action">
+          <a href="https://api.whatsapp.com/send?phone=+57{{a.wpp}}" class="#66bb6a green lighten-1">Escribirle a Whatsapp</a>
+          <a *ngIf="user.uid == a.idP" class="#e53935 red darken-1" (click)="delete(a.id)">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  
+<div class="fixed-action-btn">
+<a class="btn-floating btn-large color-banner" routerLink="/crearTaxi">
+  <i class="large material-icons">more</i>
+</a>
+</div>
+

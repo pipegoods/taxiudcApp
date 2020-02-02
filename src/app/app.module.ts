@@ -13,12 +13,14 @@ import { HomeComponent } from './home/home.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { CrearTaxiComponent } from './crear-taxi/crear-taxi.component';
 import { FormsModule } from '@angular/forms';
+import { PerfilComponent } from './perfil/perfil.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     HomeComponent,
-    CrearTaxiComponent
+    CrearTaxiComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

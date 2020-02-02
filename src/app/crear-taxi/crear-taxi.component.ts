@@ -17,6 +17,8 @@ export class CrearTaxiComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    console.log(this.authService.userData);
+    
     this.taxi = {
       id: "",
       idP: this.authService.userData.uid,

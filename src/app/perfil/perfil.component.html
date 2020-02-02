@@ -1,0 +1,16 @@
+
+        <!-- Show user data when logged in -->
+        <div class="row">
+
+              <img class="circle responsive-img" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                alt="{{user.displayName}}">
+              <div >
+                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                <p>User ID: <strong>{{user.uid}}</strong></p>
+                <p>Email: <strong>{{user.email}}</strong></p>
+                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                <p>Whatsapp: <strong *ngIf="!banderaEditTel">{{(user.phoneNumber) ? user.phoneNumber: 'No tiene'}}
+                </strong> <input *ngIf="banderaEditTel" type="text" [(ngModel)]="user.phoneNumber"> <button *ngIf="!banderaEditTel" type="button" (click)="banderaEditTel = true">Cambiar numero</button><button *ngIf="banderaEditTel" type="button" (click)="guardar()">Guardar</button></p>
+              </div>
+</div>
+

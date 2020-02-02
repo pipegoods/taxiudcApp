@@ -1,10 +1,12 @@
 <nav>
     <div class="nav-wrapper" style="background-color: #ffb700;">
-      <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-      <ul class="right" *ngIf="authService.userData as user">
-        <li><span>{{user.displayName}}</span></li>
-        <li><a (click)="authService.SignOut()"><i class="material-icons">exit_to_app</i></a></li>
-      </ul>
+      <a routerLink="/home" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+      <div *ngIf="authService.userData.displayName != ''">
+        <ul class="right" *ngIf="authService.userData as user">
+          <li><a routerLink="/perfil">{{user.displayName}}</a></li>
+          <li><a (click)="authService.SignOut()"><i class="material-icons">exit_to_app</i></a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 

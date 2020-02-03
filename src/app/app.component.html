@@ -1,6 +1,6 @@
 <nav>
     <div class="nav-wrapper" style="background-color: #ffb700;">
-      <a routerLink="/home" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+      <a routerLink="/home" class="brand-logo"><i class="material-icons">local_taxi</i>Taxi UDC</a>
       <div *ngIf="authService.userData.displayName != ''">
         <ul class="right" *ngIf="authService.userData as user">
           <li><a routerLink="/perfil">{{user.displayName}}</a></li>

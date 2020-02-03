@@ -32,14 +32,16 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
         userRef.valueChanges().subscribe(e => {
           console.log(e);
-          
-          this.userData.displayName = e.displayName;
+          if (e) {
+            this.userData.displayName = e.displayName;
           this.userData.uid = e.uid;
           this.userData.photoURL = e.photoURL;
           this.userData.emailVerified = e.emailVerified;
           this.userData.phoneNumber = e.phoneNumber;
           this.userData.email = e.email;
           this.userData.barriosI = e.barriosI;
+          } 
+          
           localStorage.setItem('user', JSON.stringify(this.userData));
           JSON.parse(localStorage.getItem('user'));
           
@@ -84,18 +86,31 @@ export class AuthService {
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-
+    let userData: User;
     userRef.valueChanges().subscribe(e => {
       console.log(e); 
-      const userData: User = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        emailVerified: user.emailVerified,
-        phoneNumber: (user.phoneNumber != null) ? user.phoneNumber : e.phoneNumber,
-        barriosI: (user.barriosI != null) ? user.barriosI : e.barriosI
+      if (e) {
+        userData = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified,
+          phoneNumber: (user.phoneNumber != null) ? user.phoneNumber : e.phoneNumber,
+          barriosI: (user.barriosI != null) ? user.barriosI : e.barriosI
+        }
+      } else {
+        userData = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified,
+          phoneNumber: (user.phoneNumber != null) ? user.phoneNumber : 3000000000,
+          barriosI: (user.barriosI != null) ? user.barriosI : []
+        }
       }
+      
       
       return userRef.set(userData, {
         merge: true

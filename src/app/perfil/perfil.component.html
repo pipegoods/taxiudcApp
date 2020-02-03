@@ -1,23 +1,20 @@
-
-        <!-- Show user data when logged in -->
-        <div class="row">
-
-              <img class="circle responsive-img" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                alt="{{user.displayName}}">
-              <div >
-                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                <p>User ID: <strong>{{user.uid}}</strong></p>
-                <p>Email: <strong>{{user.email}}</strong></p>
-                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-                <p>Whatsapp: <strong *ngIf="!banderaEditTel">{{(user.phoneNumber) ? user.phoneNumber: 'No tiene'}}
-                </strong> <input *ngIf="banderaEditTel" type="text" [(ngModel)]="user.phoneNumber"> <button *ngIf="!banderaEditTel" type="button" (click)="banderaEditTel = true">Cambiar numero</button><button *ngIf="banderaEditTel" type="button" (click)="guardar()">Guardar</button></p>
-                <br>
-                <p>Barrios de interes</p>
-                <ul>
-                    <li *ngFor="let item of user.barriosI">{{item}}</li>
-                </ul>
-                <input type="text" [(ngModel)]="barrioA">
-                <button type="button" (click)="agregarBarrio()">Agregar barrio</button>
-              </div>
-</div>
-
+<div class="card">
+    <div class="card-header">
+      <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+      alt="{{user.displayName}}"/>
+    </div>
+    <div class="card-content">
+      <h3>{{(user.displayName) ? user.displayName : 'User'}}</h3>
+      <h4>Información: </h4>
+      <p><span style="color: green;">Whatsapp:</span> <strong *ngIf="!banderaEditTel">{{(user.phoneNumber) ? user.phoneNumber: 'No tiene'}}
+    </strong> <input *ngIf="banderaEditTel" type="text" [(ngModel)]="user.phoneNumber"> <button *ngIf="!banderaEditTel" type="button" (click)="banderaEditTel = true">Cambiar numero</button><button *ngIf="banderaEditTel" type="button" (click)="guardar()">Guardar</button></p>
+    <br>
+    <p>Barrios de interes</p>
+    <ul class="collection">
+        <li class="collection-item" *ngFor="let item of user.barriosI">{{item}}</li>
+    </ul>
+    <input type="text" [(ngModel)]="barrioA">
+    <button type="button" placeholder="Otro Barrio" (click)="agregarBarrio()">Agregar barrio</button>
+    </div>
+   
+  </div>
